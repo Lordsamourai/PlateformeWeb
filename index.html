@@ -125,6 +125,19 @@
 
       document.body.appendChild(script);
 
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'f' || event.key === 'F') {
+          // Basculer le mode plein écran
+          if (!document.fullscreenElement) {
+            canvas.requestFullscreen().catch(err => {
+              alert(`Erreur lors du passage en plein écran : ${err.message}`);
+            });
+          } else {
+            document.exitFullscreen();
+          }
+        }
+      });
+
     </script>
   </body>
 </html>
