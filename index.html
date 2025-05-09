@@ -94,9 +94,6 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
-
-        canvas.style.width = "960px";
-        canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
@@ -121,3 +118,35 @@
     </script>
   </body>
 </html>
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #unity-canvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background: #000;
+  }
+
+  #unity-loading-bar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  #unity-warning {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+  }
+</style>
