@@ -17,11 +17,6 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Portfolio</div>
-      </div>
     </div>
     <script>
 
@@ -109,6 +104,7 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
+        console.log("Appuyez sur F pour passer en plein écran ou quitter.");
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
