@@ -104,7 +104,7 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        console.log("Appuyez sur Echap pour passer en plein écran ou quitter.");
+        console.log("Appuyez sur F pour passer en plein écran ou quitter.");
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
@@ -120,6 +120,19 @@
             };
 
       document.body.appendChild(script);
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'f' || event.key === 'F') {
+          // Basculer le mode plein écran
+          if (!document.fullscreenElement) {
+            canvas.requestFullscreen().catch(err => {
+              alert("Erreur lors du passage en plein écran : ${err.message}");
+            });
+          } else {
+            document.exitFullscreen();
+          }
+        }
+      });
     </script>
   </body>
 </html>
