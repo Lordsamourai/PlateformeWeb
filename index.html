@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
+      <canvas id="unity-canvas"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -17,11 +17,6 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
-      <div id="unity-footer">
-        <div id="unity-webgl-logo"></div>
-        <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">Portfolio</div>
-      </div>
     </div>
     <script>
 
@@ -126,6 +121,52 @@
 
       document.body.appendChild(script);
 
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'f' || event.key === 'F') {
+          // Basculer le mode plein écran
+          if (!document.fullscreenElement) {
+            canvas.requestFullscreen().catch(err => {
+              alert(`Erreur lors du passage en plein écran : ${err.message}`);
+            });
+          } else {
+            document.exitFullscreen();
+          }
+        }
+      });
+
     </script>
   </body>
 </html>
+
+
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  #unity-canvas {
+    width: 100vw;
+    height: 100vh;
+    display: block;
+    background: #000;
+  }
+
+  #unity-loading-bar {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+  #unity-warning {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 11;
+  }
+</style>
