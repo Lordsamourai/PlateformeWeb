@@ -9,7 +9,7 @@
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
-      <canvas id="unity-canvas"></canvas>
+      <canvas id="unity-canvas" width=960 height=600 tabindex="-1"></canvas>
       <div id="unity-loading-bar">
         <div id="unity-logo"></div>
         <div id="unity-progress-bar-empty">
@@ -17,6 +17,11 @@
         </div>
       </div>
       <div id="unity-warning"> </div>
+      <div id="unity-footer">
+        <div id="unity-webgl-logo"></div>
+        <div id="unity-fullscreen-button"></div>
+        <div id="unity-build-title">Portfolio</div>
+      </div>
     </div>
     <script>
 
@@ -54,9 +59,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/5336a4b2c43054286fd70b1faa467eee.loader.js";
       var config = {
-        dataUrl: buildUrl + "/d750d635405ee50c15516ce072a72799.data.unityweb",
-        frameworkUrl: buildUrl + "/6157b3052d31e49793d33ecfdde75e42.framework.js.unityweb",
-        codeUrl: buildUrl + "/71a030ebd0251ee351042f9cea485a23.wasm.unityweb",
+        dataUrl: buildUrl + "/e4d775d170cb7a9fe5481c5e5731884b.data.unityweb",
+        frameworkUrl: buildUrl + "/cc9797b5ab9564f7c1d1a975553f530f.framework.js.unityweb",
+        codeUrl: buildUrl + "/3af19b8674ab3c02921c1591a40824ea.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Portfolio",
@@ -97,6 +102,9 @@
 
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
+
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
@@ -104,15 +112,12 @@
       var script = document.createElement("script");
       script.src = loaderUrl;
       script.onload = () => {
-        console.log("Appuyez sur F pour passer en plein écran ou quitter.");
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
-                if (fullscreenButton) {
-                  fullscreenButton.onclick = () => {
-                    unityInstance.SetFullscreen(1);
-                  };
+                fullscreenButton.onclick = () => {
+                  unityInstance.SetFullscreen(1);
                 };
               }).catch((message) => {
                 alert(message);
@@ -121,53 +126,6 @@
 
       document.body.appendChild(script);
 
-      document.addEventListener('keydown', (event) => {
-        if (event.key === 'f' || event.key === 'F') {
-          // Basculer le mode plein écran
-          if (!document.fullscreenElement) {
-            canvas.requestFullscreen().catch(err => {
-              alert(`Erreur lors du passage en plein écran : ${err.message}`);
-            });
-          } else {
-            document.exitFullscreen();
-          }
-        }
-      });
-
     </script>
   </body>
 </html>
-
-<style>
-  html, body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  #unity-canvas {
-    width: 100vw;
-    height: 100vh;
-    display: block;
-    background: #000;
-  }
-
-  #unity-loading-bar {
-    position: absolute;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 10;
-  }
-
-  #unity-warning {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 11;
-  }
-</style>
-
-
