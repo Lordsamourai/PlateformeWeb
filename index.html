@@ -54,9 +54,9 @@
       var buildUrl = "Build";
       var loaderUrl = buildUrl + "/5336a4b2c43054286fd70b1faa467eee.loader.js";
       var config = {
-        dataUrl: buildUrl + "/e4d775d170cb7a9fe5481c5e5731884b.data.unityweb",
-        frameworkUrl: buildUrl + "/cc9797b5ab9564f7c1d1a975553f530f.framework.js.unityweb",
-        codeUrl: buildUrl + "/3af19b8674ab3c02921c1591a40824ea.wasm.unityweb",
+        dataUrl: buildUrl + "/ab7cc37763cfa3f7b67ab7186221584c.data.unityweb",
+        frameworkUrl: buildUrl + "/3767f5885c9118312b17461b29673a9b.framework.js.unityweb",
+        codeUrl: buildUrl + "/3a38dc3eaa954341cff8cec546afc24b.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Portfolio",
@@ -96,7 +96,6 @@
 
 
       } else {
-        // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
       }
 
       loadingBar.style.display = "block";
@@ -110,7 +109,7 @@
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
                 if (fullscreenButton) {
-                  fullscreenButton.onclick = () => {
+                    fullscreenButton.onclick = () => {
                     unityInstance.SetFullscreen(1);
                   };
                 };
@@ -121,7 +120,7 @@
 
       document.body.appendChild(script);
 
-      document.addEventListener('keydown', (event) => {
+            document.addEventListener('keydown', (event) => {
         if (event.key === 'f' || event.key === 'F') {
           // Basculer le mode plein écran
           if (!document.fullscreenElement) {
@@ -137,7 +136,6 @@
     </script>
   </body>
 </html>
-
 
 <style>
   html, body {
